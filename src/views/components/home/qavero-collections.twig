@@ -1,0 +1,36 @@
+{#
+| component.eyebrow               | ?string  | Small label above the title |
+| component.title                 | ?string  | Section title               |
+| component.collections[]         | object[] | Tiles (first one is large)  |
+| component.collections[].image   | string   |                             |
+| component.collections[].title   | string   |                             |
+| component.collections[].subtitle| ?string  |                             |
+| component.collections[].url     | string   |                             |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-collections" class="s-block qv-collections">
+    <div class="container">
+        <div class="qv-head">
+            <div>
+                {% if component.eyebrow %}
+                    <span class="qv-eyebrow">{{ component.eyebrow }}</span>
+                {% endif %}
+                {% if component.title %}
+                    <h2 class="qv-title">{{ component.title }}</h2>
+                {% endif %}
+            </div>
+        </div>
+        <div class="qv-grid">
+            {% for item in component.collections %}
+                <a href="{{ item.url ? item.url : '#' }}" class="qv-tile {{ loop.first ? 'qv-tile--lead' : '' }}">
+                    <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+                    <span class="qv-tile__shade"></span>
+                    <span class="qv-tile__go">↗</span>
+                    <span class="qv-tile__body">
+                        {% if item.subtitle %}<span class="qv-tile__sub">{{ item.subtitle }}</span>{% endif %}
+                        <strong class="qv-tile__title">{{ item.title }}</strong>
+                    </span>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
