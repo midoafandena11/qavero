@@ -1,54 +1,4 @@
-{# ############## Shared Variables in all views ################
-| Variable                                           | Type     | Description                                                                                              |
-|----------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------|
-| store                                              | Store    |                                                                                                          |
-| store.id                                           | int      |                                                                                                          |
-| store.name                                         | string   |                                                                                                          |
-| store.username                                     | string   |                                                                                                          |
-| store.description                                  | string   |                                                                                                          |
-| store.slogan                                       | ?string  | * if feature in twilight.json                                                                            |
-| store.logo                                         | string   |                                                                                                          |
-| store.url                                          | string   |                                                                                                          |
-| store.api                                          | string   | the api url for current store                                                                            |
-| store.icon                                         | string   | *fav icon url                                                                                            |
-| store.contacts                                     | object   | [mobile, phone, email, whatsapp, telegram], ex. store.contacts.email                                     |
-| store.social                                       | object   | [instagram, snapchat, twitter, youtube, facebook, pinterest, maroof, whatsapp], ex. store.social.twitter |
-| store.settings                                     | object   |                                                                                                          |
-| store.settings.auth.email_allowed                  | bool     |                                                                                                          |
-| store.settings.auth.mobile_allowed                 | bool     |                                                                                                          |
-| store.settings.auth.is_email_required              | bool     |                                                                                                          |
-| store.settings.cart.apply_coupon_enabled           | bool     | Does visitor allowed to applay coupon in cart page                                                       |
-| store.settings.product.total_sold_enabled          | bool     |                                                                                                          |
-| store.settings.product.fit_type                    | ?string  | null when equal product card size is off, or ['cover', 'contain']                                        |
-| store.settings.category.testimonial_enabled        | bool     | Show random testimonials in category page                                                                |
-| store.settings.tax.number                          | ?string  |                                                                                                          |
-| store.settings.tax.certificate                     | ?string  | certificate image url                                                                                    |
-| store.settings.tax.taxable_prices_enabled          | bool     | Does tax included in the prices ex product_price 100 & tax is 15, price will be 115                      |
-| store.settings.rating_enabled                      | bool     | Is one of: store_enabled or shipping_enabled or products_enabled                                         |
-| store.settings.arabic_numbers_enabled              | bool     | Does the merchant wants the numbers to be shown as Arabic format                                         |
-| store.settings.is_multilingual                     | bool     |                                                                                                          |
-| store.settings.currencies_enabled                  | bool     |     
-| theme                                              | Theme    |                                                                                                          |
-| theme.id                                           | int      |                                                                                                          |
-| theme.name                                         | string   |                                                                                                          |
-| theme.mode                                         | string   | `live`, `preview`                                                                                        |
-| theme.is_rtl                                       | bool     |                                                                                                          |
-| theme.translations_hash                            | int      | to be used in case merchant updated frontend store translations                                          |
-| theme.color                                        | object   |                                                                                                          |
-| theme.color.primary                                | string   |                                                                                                          |
-| theme.color.text                                   | string   | suitable text color comparing to `theme.primary.color`, #000000, #FFFFFF                                 |
-| theme.color.reverse_primary                        | string   |                                                                                                          |
-| theme.color.reverse_text                           | string   | if `theme.text_color=#000000` means that `theme.reverse_text_color=#FFFFFF`                              |
-| theme.color.is_dark                                | bool     | Does main store color `theme.primary.color` considered as dim color?                                     |
-| theme.color.darker(float alpha, ?string hexColor)  | string   | get darker color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0             |
-| theme.color.lighter(float alpha, ?string hexColor) | string   | get lighter color from `theme.primary.color` or from passed color, `alpha` range from 0.0-1.0            |
-| theme.font                                         | ?object  | Salla predefined font, null when the theme doesn't have `fonts` feature                                  |
-| theme.font.name                                    | string   | DINNextLTArabic-Regular, Amazon-Ember, Apple, Dubai, Estedad                                             |
-| theme.font.url                                     | string   | css full url ex: 'https://my_store.test/dist/fonts/default.css'                                          |
-| theme.settings                                     | object   | dynamic object with values of the `settings` in twilight.json ex. `theme.settings.topnav_is_dark`        |
-| theme.settings.set(settingName, value)             | string   | set global var, then get it {{theme.settings.get('my_var','fallback') }}                                 |
-| theme.settings.get(settingName, default=null)      | mixed    | get theme setting ex `theme.settings.get('my_var', 'fallback')`                                          |
-#}
+{# Qavero - master layout (based on Salla Theme Raed, MIT) #}
 <!DOCTYPE html>
 <html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 <!-- بسم الله الرحمن الرحيم -->
@@ -80,6 +30,102 @@
     {% hook head %}
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    <style id="qavero-style">
+:root {
+  --q-ink: #1b1a17;
+  --q-ivory: #faf7f2;
+  --q-sand: #efe8dc;
+  --q-line: #e4dccd;
+  --q-bronze: #a9794a;
+  --q-radius: 2px;
+  --q-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.theme-raed {
+  background-color: var(--q-ivory);
+  color: var(--q-ink);
+  -webkit-font-smoothing: antialiased;
+}
+body.theme-raed ::selection { background: var(--q-bronze); color: #fff; }
+
+.topnav-is-dark .top-navbar { background: var(--q-ink); color: #d9d2c4; }
+.main-nav-container,
+.main-nav-container.bg-white {
+  background: var(--q-ivory);
+  box-shadow: none;
+  border-bottom: 1px solid var(--q-line);
+}
+.main-nav-container a { transition: color 0.25s var(--q-ease); }
+.main-nav-container a:hover { color: var(--q-bronze); }
+
+.s-block__title h2,
+.s-block-title { font-weight: 700; letter-spacing: -0.01em; }
+.s-block__title h2::after,
+.s-block-title::after {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin-top: 10px;
+  background: var(--q-bronze);
+}
+.s-block__title { margin-bottom: 1.75rem; }
+
+.s-button-btn,
+.btn {
+  border-radius: var(--q-radius);
+  letter-spacing: 0.02em;
+  transition: transform 0.25s var(--q-ease), box-shadow 0.25s var(--q-ease);
+}
+.s-button-btn:hover { transform: translateY(-1px); }
+.s-button-primary { box-shadow: 0 6px 18px -8px rgba(27, 26, 23, 0.45); }
+
+.s-product-card-entry {
+  background: transparent;
+  border-radius: var(--q-radius);
+  box-shadow: none;
+}
+.s-product-card-image {
+  overflow: hidden;
+  border-radius: var(--q-radius);
+  background: var(--q-sand);
+}
+.s-product-card-image img { transition: transform 0.9s var(--q-ease); }
+.s-product-card-entry:hover .s-product-card-image img { transform: scale(1.05); }
+.s-product-card-content { padding-top: 0.9rem; }
+.s-product-card-content-title a { font-weight: 500; letter-spacing: 0.005em; }
+.s-product-card-promotion-title {
+  background: var(--q-ink);
+  color: #fff;
+  border-radius: 0;
+  letter-spacing: 0.04em;
+}
+
+.footer-is-dark .store-footer { background: var(--q-ink); color: #cfc8b9; }
+.footer-is-dark .store-footer h3 { color: #fff; }
+.footer-is-dark .store-footer a:hover { color: var(--q-bronze); }
+.store-footer__inner { padding-top: 3.5rem; padding-bottom: 2.5rem; }
+
+.form-input,
+.s-form-control { border-radius: var(--q-radius); }
+.form-input:focus,
+.s-form-control:focus {
+  border-color: var(--q-bronze);
+  box-shadow: 0 0 0 3px rgba(169, 121, 74, 0.18);
+}
+
+@keyframes q-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+#main-content > section,
+#main-content .s-block { animation: q-rise 0.7s var(--q-ease) both; }
+@media (prefers-reduced-motion: reduce) {
+  #main-content > section,
+  #main-content .s-block,
+  .s-product-card-image img,
+  .s-button-btn { animation: none !important; transition: none !important; }
+}
+    </style>
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
     
