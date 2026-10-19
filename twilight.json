@@ -280,9 +280,879 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+            "type": "static",
+            "icon": "sicon-minus",
+            "id": "static-line7",
+            "format": "line",
+            "label": null,
+            "description": null,
+            "required": false,
+            "value": null,
+            "selected": false
+        },
+        {
+            "type": "static",
+            "icon": "sicon-title",
+            "id": "static-label8",
+            "format": "title",
+            "label": null,
+            "description": null,
+            "required": false,
+            "value": "<div class='rounded-lg' style='background-color: #3d4a3a; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> طابع كافيرو</h6></div>",
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "زوايا ناعمة",
+            "description": "يحوّل الزوايا الحادة إلى زوايا مدورة في الأزرار وبطاقات المنتجات",
+            "id": "q_soft_corners",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تكبير صورة المنتج عند التمرير",
+            "description": "حركة ناعمة لتكبير صورة المنتج عند مرور الماوس على البطاقة",
+            "id": "q_hover_zoom",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false
         }
     ],
     "components": [
+        {
+            "key": "a69dac6c-7ff1-4f98-b86e-d733829afbb7",
+            "title": {
+                "en": "Qavero - Hero",
+                "ar": "كافيرو - الواجهة الرئيسية"
+            },
+            "icon": "sicon-image-carousel",
+            "path": "home.qavero-hero",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "id": "image",
+                    "label": "صورة الواجهة",
+                    "format": "image",
+                    "value": "https://cdn.salla.sa/ZrBEO/MopzhoqpTkDObcKc8Q8n77AuydanfsGXdZO7iinH.jpg",
+                    "required": true,
+                    "placeholder": null,
+                    "description": "* يفضل صورة طولية بمقاس 1000×1250 بكسل، وتظهر داخل إطار على شكل قوس"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "eyebrow",
+                    "label": "نص صغير أعلى العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "مجموعة جديدة",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "title",
+                    "label": "العنوان الرئيسي",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "أناقة تحكي قصتك",
+                    "required": true,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "id": "description",
+                    "label": "نص تعريفي",
+                    "format": "textarea",
+                    "multilanguage": true,
+                    "value": "قطع مختارة بعناية بتفاصيل راقية وخامات تدوم، لتمنحك إطلالة لا تُنسى.",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "badge",
+                    "label": "نص الشارة الدائرية",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "جديد",
+                    "required": false,
+                    "placeholder": null,
+                    "description": "يظهر داخل دائرة صغيرة على الصورة، اتركه فارغاً لإخفائها",
+                    "minLength": 0,
+                    "maxLength": 20
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "primary_text",
+                    "label": "نص الزر الرئيسي",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "تسوّق الآن",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 30
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الرئيسي",
+                    "id": "primary_url",
+                    "value": [],
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "secondary_text",
+                    "label": "نص الزر الثانوي",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "اكتشف المجموعة",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 30
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر الثانوي",
+                    "id": "secondary_url",
+                    "value": [],
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "7ed03204-6b42-4f6a-82ab-58113c40afcf",
+            "title": {
+                "en": "Qavero - Marquee",
+                "ar": "كافيرو - شريط متحرك"
+            },
+            "icon": "sicon-format-text-alt",
+            "path": "home.qavero-marquee",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "words",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 3,
+                    "maxLength": 8,
+                    "label": null,
+                    "item_label": "عبارة",
+                    "value": [
+                        {
+                            "words.text": "شحن سريع"
+                        },
+                        {
+                            "words.text": "جودة مضمونة"
+                        },
+                        {
+                            "words.text": "تغليف فاخر"
+                        },
+                        {
+                            "words.text": "إرجاع سهل"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "words.text",
+                            "label": "العبارة",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "شحن سريع",
+                            "required": true,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 40
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "940f890b-66ab-4c4f-b169-082e61a735b0",
+            "title": {
+                "en": "Qavero - Collections",
+                "ar": "كافيرو - الأقسام المميزة"
+            },
+            "icon": "sicon-image",
+            "path": "home.qavero-collections",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "eyebrow",
+                    "label": "نص صغير أعلى العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "تسوّق حسب القسم",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "title",
+                    "label": "عنوان القسم",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "أقسام مختارة لك",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "id": "collections",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 5,
+                    "label": null,
+                    "item_label": "قسم",
+                    "value": [
+                        {
+                            "collections.image": "https://cdn.salla.sa/ZrBEO/MopzhoqpTkDObcKc8Q8n77AuydanfsGXdZO7iinH.jpg",
+                            "collections.title": "الجديد",
+                            "collections.subtitle": "وصل حديثاً"
+                        },
+                        {
+                            "collections.image": "https://cdn.salla.sa/ZrBEO/3gOhYSaIhaHxhH2IHWxJYDl9JHwxP6dGKiZFSq4K.jpg",
+                            "collections.title": "الأكثر مبيعاً",
+                            "collections.subtitle": "اختيارات العملاء"
+                        },
+                        {
+                            "collections.image": "https://cdn.salla.sa/form-builder/D7bG3pgSit43TheOejBOZV7LIfG1y1Cj0hWLmgIh.jpg",
+                            "collections.title": "التخفيضات",
+                            "collections.subtitle": "عروض محدودة"
+                        },
+                        {
+                            "collections.image": "https://cdn.salla.sa/ZrBEO/MopzhoqpTkDObcKc8Q8n77AuydanfsGXdZO7iinH.jpg",
+                            "collections.title": "الهدايا",
+                            "collections.subtitle": "للمناسبات"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-image",
+                            "id": "collections.image",
+                            "label": "صورة القسم",
+                            "format": "image",
+                            "value": "https://cdn.salla.sa/ZrBEO/MopzhoqpTkDObcKc8Q8n77AuydanfsGXdZO7iinH.jpg",
+                            "required": true,
+                            "placeholder": null,
+                            "description": "* القسم الأول يظهر بحجم كبير"
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "collections.subtitle",
+                            "label": "نص صغير",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "وصل حديثاً",
+                            "required": false,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 30
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "collections.title",
+                            "label": "اسم القسم",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "الجديد",
+                            "required": true,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "الرابط",
+                            "id": "collections.url",
+                            "value": [],
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "منتجات مع وسم",
+                                    "key": "products_tags",
+                                    "value": "products_tags"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "f1c52195-ea80-4d27-b028-203892040d8e",
+            "title": {
+                "en": "Qavero - Products",
+                "ar": "كافيرو - منتجات مختارة"
+            },
+            "icon": "sicon-shopping-bag",
+            "path": "home.qavero-products",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "eyebrow",
+                    "label": "نص صغير أعلى العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "اخترناها لك",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "title",
+                    "label": "عنوان القسم",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "منتجات مميزة",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "all_text",
+                    "label": "نص رابط عرض الكل",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "عرض الكل",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 30
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط عرض الكل",
+                    "id": "display_all_url",
+                    "value": [],
+                    "description": "عند إختيار رابط فارغ سيتم إخفاء زر 'عرض الكل'",
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "label": "منتجات",
+                    "id": "products",
+                    "format": "dropdown-list",
+                    "description": null,
+                    "selected": [],
+                    "options": [],
+                    "required": true,
+                    "multichoice": true,
+                    "source": "products",
+                    "searchable": true,
+                    "maxLength": 8,
+                    "minLength": 1,
+                    "value": []
+                }
+            ]
+        },
+        {
+            "key": "8dd2ae5a-41eb-4cc8-b89d-b31d1e3de6a4",
+            "title": {
+                "en": "Qavero - Story",
+                "ar": "كافيرو - قصة العلامة"
+            },
+            "icon": "sicon-typography",
+            "path": "home.qavero-story",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "id": "image",
+                    "label": "صورة القصة",
+                    "format": "image",
+                    "value": "https://cdn.salla.sa/ZrBEO/3gOhYSaIhaHxhH2IHWxJYDl9JHwxP6dGKiZFSq4K.jpg",
+                    "required": true,
+                    "placeholder": null,
+                    "description": "* يفضل صورة طولية بمقاس 900×1125 بكسل"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "eyebrow",
+                    "label": "نص صغير أعلى العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "قصتنا",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "title",
+                    "label": "العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "نصنع التفاصيل التي تفرق",
+                    "required": true,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "id": "text",
+                    "label": "النص",
+                    "format": "textarea",
+                    "multilanguage": true,
+                    "value": "بدأنا بشغف بسيط: أن نقدم قطعاً أنيقة تدوم. نختار كل منتج بعناية، ونهتم بأدق التفاصيل من الخامة إلى التغليف.",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 400
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "button_text",
+                    "label": "نص الزر",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "اعرف المزيد",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 30
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "button_url",
+                    "value": [],
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
+                {
+                    "id": "stats",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": false,
+                    "minLength": 0,
+                    "maxLength": 4,
+                    "label": null,
+                    "item_label": "رقم",
+                    "value": [
+                        {
+                            "stats.value": "+5000",
+                            "stats.label": "عميل سعيد"
+                        },
+                        {
+                            "stats.value": "+300",
+                            "stats.label": "منتج"
+                        },
+                        {
+                            "stats.value": "24/7",
+                            "stats.label": "دعم"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "stats.value",
+                            "label": "الرقم",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "+5000",
+                            "required": true,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 12
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "stats.label",
+                            "label": "الوصف",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "عميل سعيد",
+                            "required": false,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 30
+                        }
+                    ]
+                }
+            ]
+        },
         {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
@@ -292,7 +1162,7 @@
             "icon": "sicon-image-carousel",
             "path": "home.enhanced-slider",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/images-slider-enhancement.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -394,7 +1264,7 @@
             "icon": "sicon-layout-grid-rearrange",
             "path": "home.main-links",
             "image": "https://cdn.salla.network/images/themes/raed/main-links-with-bg.jpg?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -792,7 +1662,8 @@
                         }
                     ]
                 }
-            ]
+            ],
+            "is_default": false
         },
         {
             "key": "b89edc4a-ce0b-468f-8323-2da48147bb32",
@@ -803,7 +1674,7 @@
             "icon": "sicon-image",
             "path": "home.enhanced-square-banners",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -1020,7 +1891,8 @@
                     "searchable": true,
                     "source": "brands"
                 }
-            ]
+            ],
+            "is_default": false
         },
         {
             "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",
@@ -1031,7 +1903,7 @@
             "icon": "sicon-chat-bubbles",
             "path": "home.custom-testimonials",
             "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1",
-            "is_default": true,
+            "is_default": false,
             "fields": [
                 {
                     "type": "static",
@@ -1142,7 +2014,7 @@
     ],
     "support_url": null,
     "description": {
-        "ar": "",
-        "en": ""
+        "ar": "كافيرو: ثيم أنيق بطابع مجلات الأزياء الفاخرة، ألوان دافئة وتفاصيل راقية، مناسب لمتاجر العطور والعبايات والإكسسوارات والديكور والهدايا. يدعم العربية والإنجليزية بالكامل ويتحكم فيه التاجر من لوحة التحكم.",
+        "en": "Qavero: an elegant editorial-luxe theme with warm tones and refined details, ideal for perfume, abaya, accessories, decor and gift stores. Fully RTL/LTR ready and customizable from the dashboard."
     }
 }
