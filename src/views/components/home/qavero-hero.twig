@@ -1,0 +1,44 @@
+{#
+| component.image          | string  | Hero image (shown in an arch frame)   |
+| component.eyebrow        | ?string | Small label above the title           |
+| component.title          | string  | Main headline                         |
+| component.description    | ?string | Supporting text                       |
+| component.badge          | ?string | Small round badge on the image        |
+| component.primary_text   | ?string | Main button text                      |
+| component.primary_url    | string  | Main button link                      |
+| component.secondary_text | ?string | Secondary button text                 |
+| component.secondary_url  | string  | Secondary button link                 |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-hero" class="s-block qv-hero">
+    <div class="container qv-hero__inner">
+        <div class="qv-hero__text">
+            {% if component.eyebrow %}
+                <span class="qv-eyebrow">{{ component.eyebrow }}</span>
+            {% endif %}
+            <h2 class="qv-hero__title">{{ component.title }}</h2>
+            {% if component.description %}
+                <p class="qv-hero__desc">{{ component.description }}</p>
+            {% endif %}
+            <div class="qv-hero__actions">
+                {% if component.primary_text %}
+                    <a class="qv-btn qv-btn--solid" href="{{ component.primary_url ? component.primary_url : '#' }}">
+                        <span>{{ component.primary_text }}</span><span class="qv-arrow">↗</span>
+                    </a>
+                {% endif %}
+                {% if component.secondary_text %}
+                    <a class="qv-btn qv-btn--ghost" href="{{ component.secondary_url ? component.secondary_url : '#' }}">
+                        <span>{{ component.secondary_text }}</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="qv-hero__media">
+            <div class="qv-hero__arch">
+                <img src="{{ component.image }}" alt="{{ component.title }}" fetchpriority="high">
+            </div>
+            {% if component.badge %}
+                <div class="qv-hero__badge"><span>{{ component.badge }}</span></div>
+            {% endif %}
+        </div>
+    </div>
+</section>
