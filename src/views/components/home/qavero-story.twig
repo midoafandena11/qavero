@@ -1,0 +1,40 @@
+{#
+| component.image       | string   | Story image                         |
+| component.eyebrow     | ?string  | Small label above the title         |
+| component.title       | string   | Title                               |
+| component.text       | ?string  | Paragraph                           |
+| component.button_text | ?string  | Button text                         |
+| component.button_url  | string   | Button link                         |
+| component.stats[]     | object[] | Numbers row (value + label)         |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-story" class="s-block qv-story">
+    <div class="container qv-story__inner">
+        <div class="qv-story__media">
+            <img src="{{ component.image }}" alt="{{ component.title }}" loading="lazy">
+        </div>
+        <div class="qv-story__text">
+            {% if component.eyebrow %}
+                <span class="qv-eyebrow">{{ component.eyebrow }}</span>
+            {% endif %}
+            <h2 class="qv-title">{{ component.title }}</h2>
+            {% if component.text %}
+                <p class="qv-story__p">{{ component.text }}</p>
+            {% endif %}
+            {% if component.button_text %}
+                <a class="qv-btn qv-btn--solid" href="{{ component.button_url ? component.button_url : '#' }}">
+                    <span>{{ component.button_text }}</span><span class="qv-arrow">↗</span>
+                </a>
+            {% endif %}
+            {% if component.stats|length %}
+                <dl class="qv-stats">
+                    {% for stat in component.stats %}
+                        <div>
+                            <dt>{{ stat.value }}</dt>
+                            <dd>{{ stat.label }}</dd>
+                        </div>
+                    {% endfor %}
+                </dl>
+            {% endif %}
+        </div>
+    </div>
+</section>
