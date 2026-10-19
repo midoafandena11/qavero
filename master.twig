@@ -1,0 +1,343 @@
+{# Qavero - master layout (based on Salla Theme Raed, MIT) #}
+<!DOCTYPE html>
+<html lang="{{ language.code }}" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+<!-- بسم الله الرحمن الرحيم -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{ theme.settings.set('placeholder', 'images/placeholder.png') }}
+
+    <script defer data-cfasync="false" crossorigin="anonymous" src="{{ 'product-card.js'|asset }}"></script>
+    <script defer src="{{ 'main-menu.js'|asset }}"></script>
+    {% if theme.settings.get('enable_add_product_toast', true) %}
+        <script defer src="{{ 'add-product-toast.js'|asset }}"></script>
+    {% endif %}
+
+    {% block head_scripts %}{% endblock %}
+
+
+    <script data-cfasync="false">
+        window.header_is_sticky = "{{theme.settings.get('header_is_sticky', 'Default Value')}}"
+        window.imageZoom = "{{theme.settings.get('imageZoom')}}"
+        window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
+        window.enable_more_menu = "{{ theme.settings.get('enable_more_menu', true) }}"
+        window.enable_add_product_toast = "{{ theme.settings.get('enable_add_product_toast', true) }}"
+        window.notify_when_available_in_card = "{{ theme.settings.get('notify_when_available_in_card', true) }}"
+    </script>
+    
+    {% hook 'head:start' %}
+    {% hook head %}
+    {% block styles %}{% endblock %}
+    <link rel="stylesheet" href="{{ 'app.css' | asset }}">
+    <style id="qavero-style">
+:root {
+  --q-ink: #1b1a17;
+  --q-ivory: #faf7f2;
+  --q-sand: #efe8dc;
+  --q-line: #e4dccd;
+  --q-bronze: #a9794a;
+  --q-olive: #3d4a3a;
+  --q-muted: #6b665a;
+  --q-radius: 2px;
+  --q-radius-lg: 18px;
+  --q-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+body.theme-raed {
+  background-color: var(--q-ivory);
+  color: var(--q-ink);
+  -webkit-font-smoothing: antialiased;
+}
+body.theme-raed.q-soft { --q-radius: 14px; }
+body.theme-raed ::selection { background: var(--q-bronze); color: #fff; }
+
+/* ===== Header ===== */
+.top-navbar { min-height: 0; font-size: .8rem; letter-spacing: .03em; }
+.topnav-is-dark .top-navbar { background: var(--q-ink); color: #d9d2c4; }
+.main-nav-container,
+.main-nav-container.bg-white {
+  background: var(--q-ivory);
+  box-shadow: none;
+  border-bottom: 1px solid var(--q-line);
+}
+.main-nav-container .sicon-menu,
+.main-nav-container .header-btn__icon,
+.main-nav-container .sicon-shopping-bag { color: var(--q-ink); }
+.main-nav-container a { transition: color .25s var(--q-ease); }
+.main-nav-container a:hover { color: var(--q-bronze); }
+.main-menu > li > a { font-weight: 600; letter-spacing: .03em; }
+.main-menu > li > a::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 6px;
+  background: var(--q-bronze);
+  transform: scaleX(0);
+  transition: transform .35s var(--q-ease);
+}
+.main-menu > li > a:hover::after { transform: scaleX(1); }
+@media (max-width: 1023px) {
+  .main-nav-container .navbar-brand {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ===== Shared editorial bits ===== */
+.qv-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--q-bronze);
+}
+.qv-eyebrow::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.qv-title {
+  font-size: clamp(1.7rem, 3.6vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  margin: .6rem 0 0;
+}
+.qv-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.qv-link {
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 2px;
+  transition: color .25s var(--q-ease);
+}
+.qv-link:hover { color: var(--q-bronze); }
+.qv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .95rem 1.7rem;
+  border-radius: 999px;
+  font-size: .95rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color .3s var(--q-ease), color .3s var(--q-ease), transform .3s var(--q-ease);
+}
+.qv-btn:hover { transform: translateY(-2px); }
+.qv-btn--solid { background: var(--q-ink); color: #fff; }
+.qv-btn--solid:hover { background: var(--q-bronze); color: #fff; }
+.qv-btn--ghost { border: 1px solid var(--q-ink); color: var(--q-ink); }
+.qv-btn--ghost:hover { background: var(--q-ink); color: var(--q-ivory); }
+.qv-arrow { font-size: 1.05em; }
+
+/* ===== Hero ===== */
+.qv-hero { overflow: hidden; padding: 1.5rem 0 3rem; }
+.qv-hero__inner { display: grid; gap: 2rem; align-items: center; }
+.qv-hero__title {
+  font-size: clamp(2.4rem, 7vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -.02em;
+  margin: 1rem 0 0;
+}
+.qv-hero__desc {
+  max-width: 34rem;
+  margin: 1.25rem 0 2rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--q-muted);
+}
+.qv-hero__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.qv-hero__media { position: relative; }
+.qv-hero__arch {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 999px 999px 0 0;
+  background: var(--q-sand);
+}
+.qv-hero__arch img { width: 100%; height: 100%; object-fit: cover; }
+.qv-hero__badge {
+  position: absolute;
+  bottom: 9%;
+  inset-inline-start: -.5rem;
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  padding: .75rem;
+  border-radius: 50%;
+  background: var(--q-ink);
+  color: var(--q-ivory);
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transform: rotate(-8deg);
+  box-shadow: 0 12px 30px -12px rgba(27, 26, 23, .55);
+}
+@media (min-width: 1024px) {
+  .qv-hero { padding: 3rem 0 5rem; }
+  .qv-hero__inner { grid-template-columns: 1.05fr .95fr; gap: 4rem; min-height: 640px; }
+  .qv-hero__badge { inset-inline-start: -2rem; width: 132px; height: 132px; font-size: .9rem; }
+}
+
+/* ===== Marquee ===== */
+.qv-marquee { overflow: hidden; background: var(--q-ink); color: #e9e2d3; padding: .95rem 0; white-space: nowrap; }
+.qv-marquee__track { display: inline-flex; animation: qv-scroll 32s linear infinite; }
+.qv-marquee__item { display: inline-flex; align-items: center; font-size: .85rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; }
+.qv-marquee__item::after { content: "✦"; margin: 0 2rem; color: var(--q-bronze); }
+@keyframes qv-scroll { to { transform: translateX(-16.6667%); } }
+[dir="rtl"] .qv-marquee__track { animation-name: qv-scroll-rtl; }
+@keyframes qv-scroll-rtl { to { transform: translateX(16.6667%); } }
+
+/* ===== Collections (bento) ===== */
+.qv-collections { padding: 4rem 0 2rem; }
+.qv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.qv-tile {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--q-radius-lg);
+  background: var(--q-sand);
+  color: #fff;
+}
+.qv-tile--lead { grid-column: span 2; aspect-ratio: 16 / 11; }
+.qv-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--q-ease); }
+.qv-tile:hover img { transform: scale(1.06); }
+.qv-tile__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20, 19, 16, .7), rgba(20, 19, 16, 0) 55%); }
+.qv-tile__body { position: absolute; inset-inline: 1.1rem; bottom: 1.1rem; display: flex; flex-direction: column; gap: .2rem; }
+.qv-tile__sub { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; opacity: .85; }
+.qv-tile__title { font-size: 1.15rem; font-weight: 700; }
+.qv-tile__go {
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1rem;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(250, 247, 242, .92);
+  color: var(--q-ink);
+  transition: transform .4s var(--q-ease), background-color .3s var(--q-ease);
+}
+.qv-tile:hover .qv-tile__go { transform: rotate(45deg); background: var(--q-bronze); color: #fff; }
+@media (min-width: 1024px) {
+  .qv-collections { padding: 5rem 0 3rem; }
+  .qv-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 300px; gap: 1rem; }
+  .qv-tile { aspect-ratio: auto; }
+  .qv-tile--lead { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+  .qv-tile__title { font-size: 1.4rem; }
+}
+
+/* ===== Products ===== */
+.qv-products { padding: 3rem 0 2rem; }
+.qv-products .s-block__title,
+.qv-products .s-slider-block__title { display: none; }
+.s-product-card-entry { background: transparent; border-radius: var(--q-radius); box-shadow: none; }
+.s-product-card-image { overflow: hidden; border-radius: var(--q-radius); background: var(--q-sand); }
+.s-product-card-image img { transition: transform .9s var(--q-ease); }
+body.theme-raed:not(.q-no-zoom) .s-product-card-entry:hover .s-product-card-image img { transform: scale(1.05); }
+.s-product-card-content { padding-top: .9rem; }
+.s-product-card-content-title a { font-weight: 500; letter-spacing: .005em; }
+.s-product-card-promotion-title { background: var(--q-ink); color: #fff; border-radius: 0; letter-spacing: .04em; }
+
+/* ===== Story ===== */
+.qv-story { margin-top: 3rem; padding: 4rem 0; background: var(--q-sand); }
+.qv-story__inner { display: grid; gap: 2.5rem; align-items: center; }
+.qv-story__media { position: relative; isolation: isolate; }
+.qv-story__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--q-radius-lg); }
+.qv-story__media::after {
+  content: "";
+  position: absolute;
+  inset: 1rem -.75rem -1rem .75rem;
+  border: 1px solid var(--q-bronze);
+  border-radius: var(--q-radius-lg);
+  z-index: -1;
+}
+.qv-story__p { max-width: 34rem; margin: 1.25rem 0 2rem; font-size: 1.05rem; line-height: 1.9; color: var(--q-muted); }
+.qv-stats { display: flex; flex-wrap: wrap; gap: 2rem; margin: 2.25rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--q-line); }
+.qv-stats dt { font-size: 1.9rem; font-weight: 800; line-height: 1.1; }
+.qv-stats dd { margin: .25rem 0 0; font-size: .8rem; color: var(--q-muted); }
+@media (min-width: 1024px) {
+  .qv-story { padding: 6rem 0; }
+  .qv-story__inner { grid-template-columns: 1fr 1fr; gap: 5rem; }
+}
+
+/* ===== Footer, forms, motion ===== */
+.footer-is-dark .store-footer { background: var(--q-ink); color: #cfc8b9; }
+.footer-is-dark .store-footer h3 { color: #fff; }
+.footer-is-dark .store-footer a:hover { color: var(--q-bronze); }
+.store-footer__inner { padding-top: 3.5rem; padding-bottom: 2.5rem; }
+.s-button-btn, .btn { border-radius: var(--q-radius); letter-spacing: .02em; transition: transform .25s var(--q-ease), box-shadow .25s var(--q-ease); }
+.s-button-btn:hover { transform: translateY(-1px); }
+.form-input, .s-form-control { border-radius: var(--q-radius); }
+.form-input:focus, .s-form-control:focus { border-color: var(--q-bronze); box-shadow: 0 0 0 3px rgba(169, 121, 74, .18); }
+@keyframes q-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+#main-content > section { animation: q-rise .7s var(--q-ease) both; }
+@media (prefers-reduced-motion: reduce) {
+  #main-content > section, .s-product-card-image img, .qv-tile img, .qv-marquee__track, .qv-btn { animation: none !important; transition: none !important; }
+}
+    </style>
+    <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
+    <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
+    
+    <style>
+        :root {
+            --font-main: '{{theme.font.name}}';
+            --color-primary: {{ theme.color.primary }};
+            --color-primary-dark: {{ theme.color.darker(0.15) }};
+            --color-primary-light: {{ theme.color.lighter(0.15) }};
+            --color-primary-reverse: {{ theme.color.reverse_text }};
+            /* Theme specific variables */
+            --s-radius: .75rem;
+        }
+    </style>
+    {# tracking services, custom css feature. #}
+    {% hook 'head:end' %}
+</head>
+<body id="app" class="theme-raed overflow-x-hidden {% hook 'body:classes' %}
+  {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
+  {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
+  {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}
+  {{ theme.settings.get('q_soft_corners') ? ' q-soft' : '' }}
+  {{ theme.settings.get('q_hover_zoom', true) ? '' : ' q-no-zoom' }}
+  ">
+<noscript>
+    To get full functionality of this site you need to enable JavaScript. Here is how
+    <a href="https://www.enable-javascript.com/" rel="noreferrer"
+       target="_blank">To enable JavaScript on webpage</a>.
+</noscript>
+<div class="app-inner flex flex-col min-h-full">
+    {% hook 'body:start' %}
+    {% component 'header.header' %}
+    <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
+    {% block content %}{% endblock %}
+    </main>
+    {% component 'footer.footer' %}
+</div>
+{% hook 'body:end' %}
+{% if theme.settings.get('enable_add_product_toast', true) %}
+    <salla-add-product-toast data-testid="store-add-product-toast"></salla-add-product-toast>
+{% endif %}
+<script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
+
+{# Twilight Components #}
+<salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
+<salla-search data-testid="store-search-modal"></salla-search>
+<salla-login-modal data-testid="store-login-modal"></salla-login-modal>
+{% if store.scope %}
+    <salla-scopes data-testid="store-scopes" selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+{% endif %}
+{% block scripts %}{% endblock %}
+</body>
+</html>
