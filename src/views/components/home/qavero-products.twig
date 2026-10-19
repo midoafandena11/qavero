@@ -1,0 +1,35 @@
+{#
+| component.eyebrow         | ?string   | Small label above the title        |
+| component.title           | ?string   | Section title                      |
+| component.all_text        | ?string   | "View all" link text               |
+| component.display_all_url | string    | "View all" link                    |
+| component.products        | Product[] | Selected products                  |
+| position                  | int       | Sorting number start from zero     |
+#}
+{% set display_all = component.display_all_url %}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-products" class="s-block qv-products">
+    <div class="container">
+        <div class="qv-head">
+            <div>
+                {% if component.eyebrow %}
+                    <span class="qv-eyebrow">{{ component.eyebrow }}</span>
+                {% endif %}
+                {% if component.title %}
+                    <h2 class="qv-title">{{ component.title }}</h2>
+                {% endif %}
+            </div>
+            {% if display_all != '' and display_all != '#' and component.all_text %}
+                <a class="qv-link" href="{{ display_all }}">{{ component.all_text }}</a>
+            {% endif %}
+        </div>
+        <salla-products-slider
+            data-testid="store-home-qavero-products-slider"
+            {% if component.products|length %}
+                source="selected"
+                source-value="[{{ component.products|map((product) => product.id)|join(',') }}]"
+            {% endif %}
+            block-title=" "
+            slider-id="qv-products-{{ position }}"
+        ></salla-products-slider>
+    </div>
+</section>
