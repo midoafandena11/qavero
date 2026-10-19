@@ -1,0 +1,15 @@
+{#
+| component.words[]      | object[] | List of words/phrases       |
+| component.words[].text | string   | The text                    |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-marquee" class="s-block qv-marquee" aria-label="marquee">
+    <div class="qv-marquee__track">
+        {% for n in [1, 2, 3, 4, 5, 6] %}
+            {% for word in component.words %}
+                {% if word.text %}
+                    <span class="qv-marquee__item">{{ word.text }}</span>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</section>
