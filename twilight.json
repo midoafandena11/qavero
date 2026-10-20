@@ -128,6 +128,31 @@
             "selected": true
         },
         {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "شريط الإعلان العلوي",
+            "id": "qv_announcement",
+            "format": "text",
+            "multilanguage": true,
+            "value": "شحن مجاني للطلبات فوق 300 ر.س",
+            "required": false,
+            "placeholder": null,
+            "description": "نص قصير يظهر في أعلى كل الصفحات. اتركه فارغاً لإخفاء الشريط.",
+            "minLength": 0,
+            "maxLength": 90
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "شريط التنقل السفلي في الجوال",
+            "description": "شريط ثابت أسفل الشاشة (الرئيسية، المنتجات، المفضلة، السلة، حسابي)",
+            "id": "qv_bottom_nav",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
             "type": "static",
             "icon": "sicon-minus",
             "id": "qv-line-brand",
