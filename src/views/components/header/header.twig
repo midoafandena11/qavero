@@ -7,6 +7,9 @@
 #}
 {% set important_links = theme.settings.get('important_links') %}
 <header data-testid="store-header" class="store-header">
+  {% if theme.settings.get('qv_announcement') %}
+    <div class="qv-announce"><div class="container">{{ theme.settings.get('qv_announcement') }}</div></div>
+  {% endif %}
   {# Bullet Delivery tag — mobile: own full-width row above the top nav
      (Figma "Mobile version"). Desktop keeps the inline pill below, next to
      scopes. Both instances self-gate on the same backend flag; `lg:hidden`
