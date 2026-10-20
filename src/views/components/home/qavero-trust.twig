@@ -1,0 +1,19 @@
+{#
+| component.promises[]       | object[] | Trust items         |
+| component.promises[].icon  | string   | Salla icon class    |
+| component.promises[].title | string   |                     |
+| component.promises[].text  | ?string  |                     |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-trust" class="s-block qv-trust">
+    <div class="container">
+        <div class="qv-trust__grid">
+            {% for item in component.promises %}
+                <div class="qv-trust__item">
+                    <span class="qv-trust__icon"><i class="{{ item.icon }}"></i></span>
+                    <h3 class="qv-trust__title">{{ item.title }}</h3>
+                    {% if item.text %}<p class="qv-trust__text">{{ item.text }}</p>{% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
