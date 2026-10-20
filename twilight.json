@@ -26,6 +26,119 @@
     ],
     "settings": [
         {
+            "type": "static",
+            "icon": "sicon-title",
+            "id": "qv-title-brand",
+            "format": "title",
+            "label": null,
+            "description": null,
+            "required": false,
+            "value": "<div class='rounded-lg' style='background-color: #0f3d2e; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 6px;border-bottom:3px solid #c8a45d;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> الهوية والمظهر</h6></div>",
+            "selected": false
+        },
+        {
+            "id": "qv_palette",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "الهوية اللونية",
+            "description": "اختر لوناً جاهزاً بتنسيق فاخر. عند اختيار (مخصص) سيُستخدم اللون الأساسي من إعدادات الألوان.",
+            "labelHTML": null,
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "زمردي فاخر (أخضر عميق + ذهبي)",
+                    "value": "emerald",
+                    "key": "c91f2b9d-fd97-4efa-bc63-119700fccdd6"
+                }
+            ],
+            "options": [
+                {
+                    "label": "زمردي فاخر (أخضر عميق + ذهبي)",
+                    "value": "emerald",
+                    "key": "c91f2b9d-fd97-4efa-bc63-119700fccdd6"
+                },
+                {
+                    "label": "أسود وذهبي",
+                    "value": "noir",
+                    "key": "6f6b6bb5-df2d-4341-9ec8-5508408ae5e1"
+                },
+                {
+                    "label": "عنابي وذهبي",
+                    "value": "burgundy",
+                    "key": "a689cd4d-3172-403f-abfc-206b72f9dc80"
+                },
+                {
+                    "label": "كحلي وذهبي",
+                    "value": "navy",
+                    "key": "4e739557-f037-4a5e-b09e-5a04916304b7"
+                },
+                {
+                    "label": "طوبي دافئ",
+                    "value": "terracotta",
+                    "key": "3a66079c-c127-4423-8b53-7304b0ed83fe"
+                },
+                {
+                    "label": "بنفسجي داكن",
+                    "value": "plum",
+                    "key": "603fe944-90d3-4d82-b8b7-104c4f4fae54"
+                },
+                {
+                    "label": "مخصص (حسب اللون الأساسي للثيم)",
+                    "value": "custom",
+                    "key": "d08cff85-9bed-40b6-ab61-12cdb8af1fed"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "اللون الإضافي (للوضع المخصص)",
+            "id": "qv_custom_accent",
+            "format": "text",
+            "multilanguage": false,
+            "value": "#c8a45d",
+            "required": false,
+            "placeholder": "#c8a45d",
+            "description": "كود لون مثل #c8a45d، يُستخدم في الخطوط الذهبية والتفاصيل عند اختيار الوضع المخصص فقط.",
+            "minLength": 0,
+            "maxLength": 9
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "زوايا ناعمة",
+            "description": "يحوّل الزوايا الحادة إلى مدورة في الأزرار وبطاقات المنتجات",
+            "id": "q_soft_corners",
+            "format": "switch",
+            "required": false,
+            "value": false,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تكبير صورة المنتج عند التمرير",
+            "description": "حركة ناعمة لتكبير الصورة عند مرور الماوس على بطاقة المنتج",
+            "id": "q_hover_zoom",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "static",
+            "icon": "sicon-minus",
+            "id": "qv-line-brand",
+            "format": "line",
+            "label": null,
+            "description": null,
+            "required": false,
+            "value": null,
+            "selected": false
+        },
+        {
             "id": "squar_photo_bg_image_size",
             "type": "items",
             "format": "dropdown-list",
@@ -92,7 +205,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label2",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة</h6></div>",
+            "value": "<div class='rounded-lg' style='background-color: #0f3d2e; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 6px;border-bottom:3px solid #c8a45d;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أعلى الصفحة</h6></div>",
             "variant": "h6"
         },
         {
@@ -148,7 +261,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label4",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة</h6></div>",
+            "value": "<div class='rounded-lg' style='background-color: #0f3d2e; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 6px;border-bottom:3px solid #c8a45d;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات أسفل الصفحة</h6></div>",
             "variant": "h6"
         },
         {
@@ -171,7 +284,7 @@
             "type": "static",
             "format": "title",
             "id": "static-label6",
-            "value": "<div class='rounded-lg' style='background-color: #21636d; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج</h6></div>",
+            "value": "<div class='rounded-lg' style='background-color: #0f3d2e; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 6px;border-bottom:3px solid #c8a45d;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> خيارات صفحة المنتج</h6></div>",
             "variant": "h6"
         },
         {
@@ -279,50 +392,6 @@
             "format": "switch",
             "required": false,
             "value": false,
-            "selected": false
-        },
-        {
-            "type": "static",
-            "icon": "sicon-minus",
-            "id": "static-line7",
-            "format": "line",
-            "label": null,
-            "description": null,
-            "required": false,
-            "value": null,
-            "selected": false
-        },
-        {
-            "type": "static",
-            "icon": "sicon-title",
-            "id": "static-label8",
-            "format": "title",
-            "label": null,
-            "description": null,
-            "required": false,
-            "value": "<div class='rounded-lg' style='background-color: #3d4a3a; display: flex; justify-content: center; align-items: center;padding: 15px;margin-bottom: 20px !important; flex-direction: column;gap: 15px;'><h6 style='color: #ffffff;font-size: 15px; font-weight: bold;'> طابع كافيرو</h6></div>",
-            "selected": false
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "زوايا ناعمة",
-            "description": "يحوّل الزوايا الحادة إلى زوايا مدورة في الأزرار وبطاقات المنتجات",
-            "id": "q_soft_corners",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تكبير صورة المنتج عند التمرير",
-            "description": "حركة ناعمة لتكبير صورة المنتج عند مرور الماوس على البطاقة",
-            "id": "q_hover_zoom",
-            "format": "switch",
-            "required": false,
-            "value": true,
             "selected": false
         }
     ],
@@ -947,6 +1016,241 @@
                     "maxLength": 8,
                     "minLength": 1,
                     "value": []
+                }
+            ]
+        },
+        {
+            "key": "4d9f6851-6500-4937-83e6-814610c32c5a",
+            "title": {
+                "en": "Qavero - Promo banner",
+                "ar": "كافيرو - بانر ترويجي"
+            },
+            "icon": "sicon-image",
+            "path": "home.qavero-promo",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/square-images.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "type": "string",
+                    "icon": "sicon-image",
+                    "id": "image",
+                    "label": "صورة الخلفية",
+                    "format": "image",
+                    "value": "https://cdn.salla.sa/ZrBEO/3gOhYSaIhaHxhH2IHWxJYDl9JHwxP6dGKiZFSq4K.jpg",
+                    "required": true,
+                    "placeholder": null,
+                    "description": "* يفضل صورة عريضة بمقاس 1600×700 بكسل"
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "eyebrow",
+                    "label": "نص صغير",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "عرض خاص",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 40
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "title",
+                    "label": "العنوان",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "خصم يصل إلى 30%",
+                    "required": true,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 80
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-typography",
+                    "id": "text",
+                    "label": "النص",
+                    "format": "textarea",
+                    "multilanguage": true,
+                    "value": "لفترة محدودة على مجموعة مختارة من منتجاتنا.",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 220
+                },
+                {
+                    "type": "string",
+                    "icon": "sicon-format-text-alt",
+                    "id": "button_text",
+                    "label": "نص الزر",
+                    "format": "text",
+                    "multilanguage": true,
+                    "value": "تسوّق العرض",
+                    "required": false,
+                    "placeholder": null,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 30
+                },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "button_url",
+                    "value": [],
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "منتجات مع وسم",
+                            "key": "products_tags",
+                            "value": "products_tags"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "a2758d07-0ee1-432e-8921-0c8bc40f86dd",
+            "title": {
+                "en": "Qavero - Trust promises",
+                "ar": "كافيرو - وعود الثقة"
+            },
+            "icon": "sicon-shield-check",
+            "path": "home.qavero-trust",
+            "image": "https://cdn.salla.network/images/themes/raed/preview-images/custom-testimonials.png?v=1.1",
+            "is_default": true,
+            "fields": [
+                {
+                    "id": "promises",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 6,
+                    "label": null,
+                    "item_label": "ميزة",
+                    "value": [
+                        {
+                            "promises.icon": "sicon-delivery-truck",
+                            "promises.title": "شحن سريع",
+                            "promises.text": "توصيل لكافة المدن"
+                        },
+                        {
+                            "promises.icon": "sicon-shield-check",
+                            "promises.title": "دفع آمن",
+                            "promises.text": "طرق دفع متعددة وموثوقة"
+                        },
+                        {
+                            "promises.icon": "sicon-undo",
+                            "promises.title": "إرجاع سهل",
+                            "promises.text": "سياسة استبدال واضحة"
+                        },
+                        {
+                            "promises.icon": "sicon-headphones",
+                            "promises.title": "دعم مستمر",
+                            "promises.text": "نرد عليك في أسرع وقت"
+                        }
+                    ],
+                    "fields": [
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "label": "الأيقونة",
+                            "id": "promises.icon",
+                            "value": "sicon-delivery-truck",
+                            "required": false,
+                            "format": "icon",
+                            "class": "form--inline",
+                            "description": null
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "promises.title",
+                            "label": "العنوان",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "شحن سريع",
+                            "required": true,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 40
+                        },
+                        {
+                            "type": "string",
+                            "icon": "sicon-format-text-alt",
+                            "id": "promises.text",
+                            "label": "نص مختصر",
+                            "format": "text",
+                            "multilanguage": true,
+                            "value": "توصيل لكافة المدن",
+                            "required": false,
+                            "placeholder": null,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 80
+                        }
+                    ]
                 }
             ]
         },
