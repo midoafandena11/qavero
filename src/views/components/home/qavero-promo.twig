@@ -1,0 +1,24 @@
+{#
+| component.image       | string  | Background image     |
+| component.eyebrow     | ?string |                      |
+| component.title       | string  |                      |
+| component.text        | ?string |                      |
+| component.button_text | ?string |                      |
+| component.button_url  | string  |                      |
+#}
+<section component-id="{{ componentId }}" data-testid="store-home-qavero-promo" class="s-block qv-promo">
+    <div class="container">
+        <div class="qv-promo__panel" style="background-image: url('{{ component.image }}');">
+            <div class="qv-promo__body">
+                {% if component.eyebrow %}<span class="qv-eyebrow">{{ component.eyebrow }}</span>{% endif %}
+                <h2 class="qv-promo__title">{{ component.title }}</h2>
+                {% if component.text %}<p class="qv-promo__text">{{ component.text }}</p>{% endif %}
+                {% if component.button_text %}
+                    <a class="qv-btn qv-btn--solid" href="{{ component.button_url ? component.button_url : '#' }}">
+                        <span>{{ component.button_text }}</span><span class="qv-arrow">↗</span>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
